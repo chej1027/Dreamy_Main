@@ -165,7 +165,6 @@
   </div>
 
   <script>
-    // 수면 팁 배열
     const sleepTips = [
       "[ tip. 매일 일정한 시간에 잠들고 일어나세요. ]",
       "[ tip. 소음을 없애고 온도와 조명을 쾌적하게 하세요. ]",
@@ -178,14 +177,12 @@
       "[ tip. 자기 전에 스마트폰과 같은 전자 기기 사용을 줄이세요. ]"
     ];
 
-    // 수면 팁 랜덤 표시 함수
     function showRandomTip() {
       const tipElement = document.getElementById("sleepTip");
       const randomIndex = Math.floor(Math.random() * sleepTips.length);
       tipElement.textContent = sleepTips[randomIndex];
     }
 
-    // 초기 팁 표시 및 8초마다 업데이트
     showRandomTip();
     setInterval(showRandomTip, 8000);
   </script>
