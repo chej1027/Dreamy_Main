@@ -8,21 +8,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <style>
+    
     body {
       margin: 0;
       background-color: #00204b;
       overflow: hidden;
       font-family: 'Playfair Display', serif; 
     }
-
- #background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url('https://i.imgur.com/1OpiwKZ.jpeg') no-repeat center center/cover;
-  animation: fadeInBackground 15s infinite;
-}
-
+    
+    #background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+      linear-gradient(to top, rgba(17, 100, 236, 0.7), transparent 100%), /* 노란색 그라데이션 */
+      url('https://i.imgur.com/1OpiwKZ.jpeg') no-repeat center center/cover; /* 기존 배경 이미지 */
+    background-blend-mode: overlay; /* 그라데이션과 이미지 섞임 */
+    animation: fadeInBackground 15s infinite;
+    }
 
     @keyframes fadeInBackground {
       0%, 100% { opacity: 0; }
@@ -52,10 +55,11 @@
       opacity: 0.7;
     }
 
+    
     .floating {
       position: absolute;
       width: 200px;
-      animation: float 5s infinite ease-in-out;
+      animation: float 5s infinite ease-in-out; /* 떠다니는 애니메이션 */
     }
 
     #item1 {
@@ -78,19 +82,34 @@
 
     #item4 {
       bottom: 10%;
-      left: 40%;
+      left: 55%;
       animation-delay: 3s;
     }
 
+    /* 떠다니는 애니메이션 */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
     }
 
+    /* 마우스 호버 시 회전 애니메이션 */
+    .floating:hover {
+      animation: rotate 2s linear forwards; /* 회전 애니메이션 */
+      animation-delay: 0s !important; /* hover 시 즉시 실행되도록 강제 */
+      transform: translateY(-20px); /* 회전할 때 떠다니는 효과 유지 */
+    }
+
+    /* 회전 애니메이션 */
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
     .text {
       position: absolute;
       width: 100%;
-      top: 35%;
+      top: 32%;
       text-align: center;
       font-size: 70px;
       font-weight: 700; 
@@ -102,11 +121,38 @@
     .tip {
       position: absolute;
       width: 100%;
-      top: 50%;
+      top: 46%;
       text-align: center;
-      font-size: 17px;
+      font-size: 15px;
       color: #fff;
       font-family: 'Playfair Display', serif;
+    }
+    
+    .button {
+      position: absolute;
+      width: 140px;
+      top: 55%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      background: rgba(255, 253, 187, 0.7); /* 투명한 노란색 배경 */
+      color: #00204b;
+      font-size: 15px;
+      font-weight: regular;
+      padding: 10px 20px;
+      border: 1px solid #fffdbb; /* 얇은 라인 추가 */
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: 'Playfair Display', sans;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+      transition: all 0.3s ease; /* 부드러운 효과 */
+    }
+
+    .button:hover {
+      background: rgba(255, 253, 187, 0.9); /* 호버 시 배경을 더 불투명하게 */
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 25px 7px rgba(255, 253, 187, 0.3); /* 후광 효과 */
+      border: 1px solid #fffdbb;
     }
 
     @keyframes fadeInText {
@@ -117,21 +163,23 @@
     #videoContainer {
       display: none; 
     }
+    
+    
   </style>
 </head>
 <body>
   
-  <!-- Background -->
+  <!— Background —>
   <div id="background"></div>
 
-  <!-- Menu Section -->
+  <!— Menu Section —>
   <div id="menu">
     <a href="https://chej1027.github.io/chej2222/">Main</a>
     <a href="https://chej1027.github.io/chej2223/">Survey</a>
     <a href="">Mockup</a>
   </div>
 
-  <!-- Floating Items -->
+  <!— Floating Items —>
   <a href="#link1">
     <img id="item1" class="floating" src="https://i.imgur.com/lM6gDGa.png" alt="Emotion1">
   </a>
@@ -145,13 +193,16 @@
     <img id="item4" class="floating" src="https://i.imgur.com/uq2piAy.png" alt="Emotion4">
   </a>
 
-  <!-- Main Text -->
+  <!— Main Text —>
   <div class="text">DREAMY</div>
 
-  <!-- Sleep Tip -->
+  <!— Sleep Tip —>
   <div class="tip" id="sleepTip"></div>
+  
+   <!— Button —>
+  <a class="button" href="https://chej1027.github.io/chej2223/">수면테스트 하러 가기 →</a>
 
-  <!-- Background Music -->
+  <!— Background Music —>
   <div id="videoContainer">
     <iframe 
       id="hiddenVideo"
@@ -188,4 +239,3 @@
   </script>
 </body>
 </html>
-
